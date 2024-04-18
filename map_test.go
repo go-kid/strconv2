@@ -65,6 +65,19 @@ func TestParseAnyMap(t *testing.T) {
 				},
 			},
 		},
+		{
+			name: "2",
+			args: args{
+				val: "map[arr:[map[a:a],map[b:b],map[c:c]]]",
+			},
+			want: map[string]interface{}{
+				"arr": []interface{}{
+					map[string]interface{}{"a": "a"},
+					map[string]interface{}{"b": "b"},
+					map[string]interface{}{"c": "c"},
+				},
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
