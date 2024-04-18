@@ -61,7 +61,7 @@ func ParseAnyMap(val string) (map[string]any, error) {
 
 func isMap(val string) bool {
 	return (len(val) > 4 && val[:4] == "map[" && val[len(val)-1:] == "]") ||
-		(val[:1] == "{" && val[len(val)-1:] == "}" && json.Valid([]byte(val)))
+		(len(val) > 1 && val[:1] == "{" && val[len(val)-1:] == "}" && json.Valid([]byte(val)))
 }
 
 var mapSplitConfig = &strings2.SplitConfig{
